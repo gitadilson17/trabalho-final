@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #c9d9de;/* Cor de fundo leve */
+}
+
+.header {
+    background-color: #0059ff; /* Cor de fundo do cabeçalho */
+    padding: 10px 20px; /* Espaçamento interno */
+}
+
+nav ul {
+    list-style: none; /* Remove marcadores da lista */
+    display: flex; /* Alinha os itens horizontalmente */
+    justify-content: space-between; /* Espaço entre os itens */
+    padding: 0; /* Remove padding padrão */
+}
+
+nav ul li {
+    margin: 10px; /* Espaçamento entre os itens */
+}
+
+nav a {
+    color: white; /* Cor do texto dos links */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+nav a:hover {
+    text-decoration: underline; /* Sublinha ao passar o mouse */
+}
+
+.container {
+    display: flex;           /* Ativa o Flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    height: 90vh;           /* A altura do contêiner ocupa toda a altura da tela */
+    flex-direction: column;  /* Organiza o conteúdo em coluna */
+}
+
+img {
+    display: flex;
+    padding: 10px;  
+}  
+
+.pet {
+    text-align: center;
+}
+
+.social-media {
+    display: flex;                /* Flexbox para alinhamento horizontal */
+    justify-content: center;      /* Centraliza os itens (redes sociais) */
+    margin-top: 20px;             /* Adiciona um espaço entre o conteúdo e os ícones */
+}
+
+.social-icon {
+    width: 30px;                 /* Tamanho dos ícones */
+    height: 30px;                /* Tamanho dos ícones */
+    margin: 0 10px;              /* Espaçamento entre os ícones */
+}

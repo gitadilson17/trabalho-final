@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Registro</title>
+    <link rel="stylesheet" href="Registrar.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="index.html">Menu</a></li>
+                <li><a href="Sobre Nós.html">Sobre Nós</a></li>
+                <li><a href="Contactos.html">Contactos</a></li>
+                <li><a href="Status.html">Status</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Formulário de Preenchimento</h1>
+        <h3>Dados do Animal</h3>
+
+        <form id="formRegistro">
+            <div class="input-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="input-group">
+                <label for="cor">Cor:</label>
+                <input type="text" id="cor" name="cor" required>
+            </div>
+
+            <div class="input-group">
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" name="sexo" required>
+                    <option value="" disabled selected>Escolha uma opção</option>
+                    <option value="macho">Macho</option>
+                    <option value="femea">Fêmea</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="categoria">Raça:</label>
+                <input type="text" id="raca" name="raca" required>
+            </div>
+
+            <div class="input-group">
+                <label for="categoria">Idade:</label>
+                <input type="text" id="idade" name="idade" required>
+            </div>
+
+            <div class="input-group">
+                <label for="tamanho">Tamanho:</label>
+                <input type="text" id="tamanho" name="tamanho" required>
+            </div>
+
+            <div class="input-group">
+                <label for="finalidade">Finalidade:</label>
+                <input type="text" id="finalidade" name="finalidade" required>
+            </div>
+
+            <div class="input-group">
+                <label for="motivo">Motivo da Consulta:</label>
+                <select id="motivo" name="motivo" required>
+                    <option value="" disabled selected>Escolha uma opção</option>
+                    <option value="Diareia/Vomitos">Diareia/Vomitos</option>
+                    <option value="Dificuldade para Andar">Dificuldade para Andar</option>
+                    <option value="Falta de Apetite">Falta de Apetite</option>
+                    <option value="Dores nas patas/Articulações">Dores nas patas/Articulações</option>
+                    <option value="Coceira">Coceira</option>
+                    <option value="Problemas Respiratorios">Problemas Respiratorios</option>
+                    <option value="Infeção">Infeção</option>
+                    <option value="Febre">Febre</option>
+                    <option value="Intoxicação/Envenenamento">Intoxicação/Envenenamento</option>
+                    <option value="Problemas Cardíacos">Problemas Cardíacos</option>
+                    <option value="Perda de Pelo">Perda de Pelo</option>
+                    <option value="Gestação/cuidados Reprodutivos">Gestação/cuidados Reprodutivos</option>
+                </select>
+            </div>
+
+            <h3>Dados do Dono do Animal</h3>
+
+            <div class="input-group">
+                <label for="nomeDono">Nome do Dono:</label>
+                <input type="text" id="nomeDono" name="nomeDono" required>
+            </div>
+
+            <div class="input-group">
+                <label for="morada">Morada:</label>
+                <input type="text" id="morada" name="morada" required>
+            </div>
+
+            <div class="input-group">
+                <label for="telefone">Número de Telefone:</label>
+                <input type="text" id="telefone" name="telefone" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <button type="submit" class="verificacao">Registrar</button>
+        </form>
+    </div>
+</body>
+</html>

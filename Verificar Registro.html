@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação Registral</title>
+    <link rel="stylesheet" href="Verificar Registro.css">
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="index.html">Menu</a></li>
+                <li><a href="Sobre Nós.html">Sobre Nós</a></li>
+                <li><a href="Contactos.html">Contactos</a></li>
+                <!-- Link de navegação para a página de verificação registral -->
+                <li><a href="Status.html">Status</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h3>Verificação Registral</h3>
+        <form id="verificarForm" action="#" method="post">
+            <div class="input-group">
+                <label for="nomeDonoVerifica">Nome do Dono:</label>
+                <input type="text" id="nomeDonoVerifica" name="nomeDonoVerifica" required>
+            </div>
+            <button type="submit" class="verificacao">Verificar</button>
+        </form>
+
+        <div id="resultadoVerificacao" style="display:none; margin-top: 20px;">
+            <h4>Resultado da Verificação</h4>
+            <p id="consultasRegistradas">Consultas Registradas: 0</p>
+            <p id="consultasConcluidas">Consultas Concluídas: 0</p>
+            <p id="consultaStatus"></p>
+        </div>
+    </div>
+
+    <script>
+        // Função de verificação de consulta
+        document.getElementById('verificarForm').onsubmit = function(event) {
+            event.preventDefault();
+            const nomeDonoVerifica = document.getElementById('nomeDonoVerifica').value;
+            const consultas = JSON.parse(localStorage.getItem('consultas')) || [];
+            const consultaEncontrada = consultas.find(consulta => consulta.nomeDono.toLowerCase() === nomeDonoVerifica.toLowerCase());
+
+            const resultado = document.getElementById('resultadoVerificacao');
+            const consultaStatus = document.getElementById('consultaStatus');
+
+            if (consultaEncontrada) {
+                // Exibe os resultados da consulta
+                resultado.style.display = 'block'; // Mostra o resultado
+                document.getElementById('consultasRegistradas').textContent = `Consultas Registradas: 1`;
+                
+                // Verifica o status da consulta
+                if (consultaEncontrada.status === 'Confirmada') {
+                    consultaStatus.textContent = `Consulta Confirmada! O ${consultaEncontrada.nomeAnimal} pode entrar na sala do veterinário.`;
+                } else {
+                    consultaStatus.textContent = `Consulta encontrada, mas ainda não foi confirmada.`;
+                }
+            } else {
+                // Caso não encontre a consulta
+                resultado.style.display = 'block';
+                document.getElementById('consultasRegistradas').textContent = `Consultas Registradas: 0`;
+                consultaStatus.textContent = `Consulta não encontrada para o nome do dono informado.`;
+            }
+        };
+
+        // Função para confirmar a consulta e mudar seu status
+        function confirmarConsulta(index) {
+            const consultas = JSON.parse(localStorage.getItem('consultas')) || [];
+            const consulta = consultas[index];
+
+            // Atualiza o status da consulta para "Confirmada"
+            consulta.status = 'Confirmada';
+            localStorage.setItem('consultas', JSON.stringify(consultas));
+
+            alert('Consulta confirmada para o veterinário!');
+            location.reload(); // Recarrega para refletir a mudança
+        }
+    </script>
+</body>
+</html>

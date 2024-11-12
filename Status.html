@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status das Consultas</title>
+    <link rel="stylesheet" href="Status.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="index.html">Menu</a></li>
+                <li><a href="Sobre Nós.html">Sobre Nós</a></li>
+                <li><a href="Contactos.html">Contactos</a></li>
+                <li><a href="Status.html">Status</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+        <h3>Lista de todas as consultas registradas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Animal</th>
+                    <th>Nome do Dono</th>
+                    <th>Motivo da Consulta</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="consultasLista">
+                <!-- As consultas registradas serão exibidas aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Formulário de Edição -->
+    <div id="formularioEdicao" class="formulario-edicao">
+        <h3>Editar Consulta</h3>
+        <form id="formAlteracao">
+            <div class="input-group">
+                <label for="nomeAnimalEdit">Nome do Animal:</label>
+                <input type="text" id="nomeAnimalEdit" name="nomeAnimalEdit" required>
+            </div>
+            <div class="input-group">
+                <label for="nomeDonoEdit">Nome do Dono:</label>
+                <input type="text" id="nomeDonoEdit" name="nomeDonoEdit" required>
+            </div>
+            <div class="input-group">
+                <label for="motivoEdit">Motivo da Consulta:</label>
+                <input type="text" id="motivoEdit" name="motivoEdit" required>
+            </div>
+            <button type="submit">Salvar Alterações</button>
+            <button type="button" onclick="cancelarEdicao()">Cancelar</button>
+        </form>
+    </div>
+
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const consultas = JSON.parse(localStorage.getItem('consultas')) || [];
+            const consultasLista = document.getElementById('consultasLista');
+
+            // Exibe as consultas na tabela
+            consultas.forEach((consulta, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${consulta.nomeAnimal}</td>
+                    <td>${consulta.nomeDono}</td>
+                    <td>${consulta.motivoConsulta}</td>
+                    <td>
+                        <button class="alterar-btn" onclick="editarConsulta(${index})">Alterar</button>
+                        <button class="excluir-btn" onclick="confirmarExclusao(${index})">Excluir</button>
+                        <button class="confirmar-btn" onclick="confirmarConsulta(${index})">Confirmar</button>
+                    </td>
+                `;
+                consultasLista.appendChild(tr);
+            });
+        });
+
+        // Função para editar a consulta
+        function editarConsulta(index) {
+            const consultas = JSON.parse(localStorage.getItem('consultas')) || [];
+            const consulta = consultas[index];
+
+            document.getElementById('nomeAnimalEdit').value = consulta.nomeAnimal;
+            document.getElementById('nomeDonoEdit').value = consulta.nomeDono;
+            document.getElementById('motivoEdit').value = consulta.motivoConsulta;
+
+            document.getElementById('formularioEdicao').style.display = 'block';
+
+            document.getElementById('formAlteracao').onsubmit = function(event) {
+                event.preventDefault();
+                consulta.nomeAnimal = document.getElementById('nomeAnimalEdit').value;
+                consulta.nomeDono = document.getElementById('nomeDonoEdit').value;
+                consulta.motivoConsulta = document.getElementById('motivoEdit').value;
+
+                localStorage.setItem('consultas', JSON.stringify(consultas));
+                location.reload();
+            };
+        }
+
+        // Função para confirmar a consulta
+        function confirmarConsulta(index) {
+            const consultas = JSON.parse(localStorage.getItem('consultas')) || [];
+            const consulta = consultas[index];
+
+            // Atualiza o status da consulta para "Confirmada"
+            consulta.status = 'Confirmada';
+            localStorage.setItem('consultas', JSON.stringify(consultas));
+
+            alert('Consulta confirmada para o veterinário!');
+            location.reload(); // Recarrega para refletir a mudança
+        }
+
+        // Função para cancelar a edição
+        function cancelarEdicao() {
+            document.getElementById('formularioEdicao').style.display = 'none';
+        }
+
+        // Função para confirmar exclusão
+        function confirmarExclusao(index) {
+            if (confirm('Deseja realmente excluir este item?')) {
+                const consultas = JSON.parse(localStorage.getItem('consultas')) || [];
+                consultas.splice(index, 1);
+                localStorage.setItem('consultas', JSON.stringify(consultas));
+                location.reload();
+            }
+        }
+
+       
+    </script>
+</body>
+</html>

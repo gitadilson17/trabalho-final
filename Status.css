@@ -1,0 +1,207 @@
+
+
+
+
+
+
+
+/* Reset básico para remover margens e bordas padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #c9d9de; /* Cor de fundo leve */
+}
+
+.header {
+    background-color: #0059ff; /* Cor de fundo do cabeçalho */
+    padding: 25px 20px; /* Espaçamento interno */
+}
+
+nav ul {
+    list-style: none; /* Remove marcadores da lista */
+    display: flex; /* Alinha os itens horizontalmente */
+    justify-content: space-between; /* Espaço entre os itens */
+    padding: 0; /* Remove padding padrão */
+}
+
+nav ul li {
+    margin: 10px; /* Espaçamento entre os itens */
+}
+
+nav a {
+    color: white; /* Cor do texto dos links */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+nav a:hover {
+    text-decoration: underline; /* Sublinha ao passar o mouse */
+}
+
+
+/* Container principal */
+div {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Título da página */
+h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #18bc9c;
+    color: white;
+    font-size: 16px;
+}
+
+td {
+    font-size: 14px;
+}
+
+/* Estilo dos botões */
+button {
+    padding: 9px 0;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Botão "Alterar" */
+button.alterar-btn {
+    background-color: #f39c12;
+    color: white;
+}
+
+button.alterar-btn:hover {
+    background-color: #e67e22;
+}
+
+/* Botão "Excluir" */
+button.excluir-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Botão "Confirmar" */
+button.Confirmar-btn {
+    background-color: #3ce77b;
+    color: white;
+}
+
+
+button.excluir-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Efeito ao passar o mouse sobre a tabela */
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsividade: Tabela em telas menores */
+@media (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+/* Estilo do formulário de edição */
+.formulario-edicao {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.formulario-edicao h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #18bc9c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #16a085;
+}
+
+button[type="button"] {
+    background-color: #e74c3c;
+}
+
+button[type="button"]:hover {
+    background-color: #c0392b;
+}
+
+button[type="submit"]:hover {
+    background-color: #2ecc71;
+}
